@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title> мой сайт </title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            box-sizing: border-box; 
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;      
+            margin: 0;
+            padding: 80px 20px 20px;
+            background-color: #AFEEEE;
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 0;  
+            margin-bottom: 16px;
+        }
+
+        p {
+            margin-bottom: 24px;
+            max-width: 600px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #49b149;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 18px;
+            transition: background-color 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #b3d4af;
+        }
+    </style>
+</head>
+
+<script> //конфетти!!
+document.addEventListener('click', function (e) {
+    if (e.target.closest('a, button, input, label')) return;
+
+    const colors = ['#ff0000', '#ff7f00', '#ffff00', '#00ff00',
+                    '#00ffff', '#0000ff', '#8b00ff', '#ff00ff'];
+
+    for (let i = 0; i < 25; i++) {
+        const piece = document.createElement('div');
+        piece.className = 'confetti';
+      
+        piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+        
+        piece.style.left = e.clientX + 'px';
+        piece.style.top  = e.clientY + 'px';
+        
+        if (Math.random() > 0.5) {
+            piece.style.borderRadius = '50%';
+        }
+
+        const angle = Math.random() * Math.PI * 2;
+        const distance = 50 + Math.random() * 150;
+        piece.style.setProperty('--tx', Math.cos(angle) * distance + 'px');
+        piece.style.setProperty('--ty', Math.sin(angle) * distance + 'px');
+        
+        piece.style.setProperty('--rot', Math.random() * 720 - 360 + 'deg');
+      
+        const size = 6 + Math.random() * 8;
+        piece.style.width  = size + 'px';
+        piece.style.height = size + 'px';
+       
+        piece.style.animationDelay = (Math.random() * 0.1) + 's';
+
+        document.body.appendChild(piece);
+
+        setTimeout(() => piece.remove(), 1700);
+    }
+});
+</script>
+
+<body>
+    
+  <h1>Морские зайцы (молюски)</h1>  
+  <p>
+    На самом деле «морской заяц» — это не какое-то единое животное, а народное название для целого рода брюхоногих моллюсков. Учёные называют его аплизия (лат. Aplysia). 
+  </p> 
+  <img src="photo.jpg" alt="no_foto" style="max-width: 50%; height: auto;">
+   
+    <p>
+    Внешне аплизии похожи на крупных слизней. Свое «заячье» имя они получили из-за двух пар чувствительных щупалец на голове: задняя пара действительно напоминает ушки. С боков тело прикрыто массивными лопастями — моллюск может расправлять их и, волнообразно сокращая, довольно долго плыть. Окраска у разных видов очень разнообразная: встречаются тёмно-фиолетовые особи с белыми пятнами, охряно-жёлтые с разводами, грязно-серые или желтоватые.
+   </p>
+   <h2>Где живут и чем питаются</h2>
+   <p>
+    Род широко распространён в тёплых морях. Морские зайцы — растительноядные: основу их рациона составляют водоросли (зелёные, красные, бурые). Чтобы перетирать грубую клетчатку, в желудке у них развились особые мощные пластинки.
+   </p>
+   <h2>Особенности поведения и защиты</h2>
+   <p>При опасности аплизии выделяют из желёз на краях мантии большое количество яркой (часто пурпурной или фиолетовой) жидкости. В чернилах некоторых видов содержится особое клейкое вещество — опалин. Оно облепляет органы чувств хищника (например, омара), блокируя обоняние и дезориентируя его. Пока враг пытается счистить слизь, моллюск успевает скрыться.Есть и другой защитный механизм: некоторые виды накапливают в теле токсины, которые получают из поедаемых водорослей. Такие вещества могут быть парализующими или просто крайне неприятными для хищников. Кстати, есть нюанс: не все морские зайцы умеют «чернить». Например, чёрный морской заяц (Aplysia vaccaria) не вырабатывает такие чернила, но зато активно использует токсичные метаболиты из водорослей. </p>
+   <h2>Размножение</h2>
+   <p>Морские зайцы — гермафродиты. Интересный нюанс: они часто спариваются «цепочкой». Особи в середине такой цепи поочерёдно выполняют то мужскую, то женскую роль по отношению к соседям спереди и сзади.</p>
+   <h2>Почему они важны для науки</h2>
+   <p>Аплизии — одни из самых популярных модельных организмов в нейробиологии. Дело в том, что их нервная система состоит примерно из 20 000 нервных клеток, и при этом сами нейроны очень крупные (могут достигать 1 мм в диаметре) — их хорошо видно невооружённым глазом. Учёным удобно работать с такими клетками: впрыскивать в них вещества, подключать электроды, изучать реакции. Именно исследования аплизий помогли американскому учёному Эрику Канделу понять физиологические механизмы памяти — за это в 2000 году он получил Нобелевскую премию. </p>
+   <h2>Несколько фактов</h2>
+   <p>Среди аплизий есть и настоящие гиганты. Например, Aplysia vaccaria (чёрный или калифорнийский заяц): самый крупный обнаруженный экземпляр достигал 99 см в длину и весил 14 кг. </p>
+    
+   <img src="photo1.jpg" alt="no_foto" style="max-width: 50%; height: auto;">
+   <p>Вид морских брюхоногих моллюсков из семейства Aplysiidae подкласса Heterobranchia. Вид широко распространён у восточного побережья Тихого океана к северу от северной части Калифорнии и далее на юг по всей его длине.</p>
+
+
+    
+    
+    <a href="page2.html" class="btn">Перейти на страницу 2</a>
+   
+</body>
+</html>

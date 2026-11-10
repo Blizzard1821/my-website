@@ -1,0 +1,156 @@
+h1, h2 {
+    background: linear-gradient(90deg, 
+        #ffffff, #bcbcbc, #eaeabf, #e3d7d7);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    animation: rainbow 3s linear infinite;
+}
+body {
+    background: linear-gradient(-45deg, #66836c);
+    background-size: 400% 400%;
+    animation: gradientBG 10s ease infinite;
+    
+}
+
+@keyframes rainbow {
+    0%   { background-position: 0% center; }
+    100% { background-position: 200% center; }
+}
+
+img {
+    border-radius: 67px;
+    border-radius: 15px;
+    animation: float 3s ease-in-out infinite;
+}
+
+.quiz {
+    background: rgba(255, 255, 255, 0.45);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 18px;
+    padding: 28px;
+    max-width: 550px;
+    width: 100%;
+    margin: 24px 0;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+}
+
+.quiz h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.question {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.answers {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.answer {
+    padding: 10px 16px;
+    border: 2px solid #9932CC;
+    background: white;
+    color: #333;
+    border-radius: 10px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: left;
+}
+
+.answer:hover:not(:disabled) {
+    background: #f0e6ff;
+}
+
+.answer:disabled {
+    cursor: default;
+    opacity: 0.6;
+}
+
+.answer.picked {
+    background: #9932CC;
+    color: white;
+    border-color: #9932CC;
+    opacity: 1;
+}
+
+.result {
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 18px;
+    min-height: 24px;
+    text-align: center;
+}
+.result-img {
+    display: block;
+    width: 120px;          /* размер картинки */
+    height: 120px;
+    object-fit: cover;     /* не искажает пропорции */
+    border-radius: 50%;    /* круглая — можно убрать */
+    margin: 0 auto 12px;   /* по центру + отступ снизу */
+    border: 3px solid #9932CC;
+    animation: none;       /* отключаем глобальное «плавание» */
+    max-width: 100%;       /* не вылезет за рамку на узких экранах */
+}
+
+
+.btn {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.1s;
+}
+
+.btn:active {
+    transform: scale(0.95);
+}
+.btn {
+    transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+.btn:hover {
+    transform: scale(1.15);
+}
+.btn::after {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 0; height: 0;
+    background: rgba(255,255,255,0.5);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.5s, height 0.5s;
+}
+
+.btn:active::after {
+    width: 300px;
+    height: 300px;
+}
+
+.confetti {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    pointer-events: none;
+    z-index: 9999;
+    will-change: transform, opacity;
+    animation: confetti-fall 1.5s ease-out forwards;
+}
+
+@keyframes confetti-fall {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(var(--tx), var(--ty)) rotate(var(--rot));
+        opacity: 0;
+    }
+}

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Страница 2</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            box-sizing: border-box; 
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;      
+            margin: 0;
+            padding: 80px 20px 20px;
+            background-color: #AFEEEE;
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 0;  
+            margin-bottom: 16px;
+        }
+
+        p {
+            margin-bottom: 24px;
+            max-width: 600px;
+        }
+
+    
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #49b149;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 18px;
+            transition: background-color 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #b3d4af;
+        }
+    </style>
+</head>
+
+<script> //конфетти!!
+document.addEventListener('click', function (e) {
+    if (e.target.closest('a, button, input, label')) return;
+
+    const colors = ['#ff0000', '#ff7f00', '#ffff00', '#00ff00',
+                    '#00ffff', '#0000ff', '#8b00ff', '#ff00ff'];
+
+    for (let i = 0; i < 25; i++) {
+        const piece = document.createElement('div');
+        piece.className = 'confetti';
+
+        piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+
+        piece.style.left = e.clientX + 'px';
+        piece.style.top  = e.clientY + 'px';
+
+        if (Math.random() > 0.5) {
+            piece.style.borderRadius = '50%';
+        }
+
+        const angle = Math.random() * Math.PI * 2;
+        const distance = 50 + Math.random() * 150;
+        piece.style.setProperty('--tx', Math.cos(angle) * distance + 'px');
+        piece.style.setProperty('--ty', Math.sin(angle) * distance + 'px');
+        piece.style.setProperty('--rot', Math.random() * 720 - 360 + 'deg');
+
+        const size = 6 + Math.random() * 8;
+        piece.style.width  = size + 'px';
+        piece.style.height = size + 'px';
+
+        piece.style.animationDelay = (Math.random() * 0.1) + 's';
+
+        document.body.appendChild(piece);
+
+        setTimeout(() => piece.remove(), 1700);
+    }
+});
+</script>
+
+<div class="quiz" id="hareQuiz">
+    <h3>Тест: Какой ты морской заяц? 💬</h3>
+
+    <div class="question-block">
+        <p class="question">Твой идеальный отдых - это:</p>
+        <div class="answers">
+            <button class="answer" data-type="white">Тишина, природа, уединение 🌿 🍃 🏞️ 🌙</button>
+            <button class="answer" data-type="spotted">Поездка или вечеринка 🚗 🎊 🕺 ✈️</button>
+            <button class="answer" data-type="black">Спорт или поход 🥾 ⛰️ 🏃 💪</button>
+        </div>
+    </div>
+
+    <p class="result"></p>
+</div>
+
+<script> //тест
+(function () {
+    const quiz = document.getElementById('hareQuiz');
+    if (!quiz) return;
+
+    const result = quiz.querySelector('.result');
+
+    const profiles = {
+        white: {
+            emoji: '🤍',
+            name: 'Ты - Белый морской заяц',
+            img: 'white.jpg',
+            text: 'Ты спокойный, вдумчивый и ценишь гармонию. Надёжный друг, который всегда выслушает. Твоя сила — в тишине и ясности.'
+        },
+        spotted: {
+            emoji: '🧡',
+            name: 'Ты - Пятнистый морской заяц',
+            img: 'spotted.jpg',
+            text: 'Ты яркий, общительный и любопытный. Тебе скучно на месте, ты зажигаешь других и находишь нестандартные решения. Твоя сила — в движении и идеях.'
+        },
+        black: {
+            emoji: '🖤',
+            name: 'Ты - Чёрный морской заяц',
+            img: 'black.jpg',
+            text: 'Ты уверенный, целеустремлённый и стойкий. Не боишься трудностей и идёшь к цели. Твоя сила — в характере и воле.'
+        }
+    };
+
+    quiz.querySelectorAll('.answer').forEach(btn => {
+        btn.addEventListener('click', () => {
+            quiz.querySelectorAll('.answer').forEach(b => {
+                b.disabled = true;
+                b.classList.remove('picked');
+            });
+            btn.classList.add('picked');
+            const p = profiles[btn.dataset.type];
+            result.innerHTML = `<img src="${p.img}" alt="${p.name}" class="result-img">
+                <div>${p.emoji} <strong>${p.name}</strong></div>
+                <div class="result-text">${p.text}</div>`;
+        });
+    });
+})();
+</script>
+
+<body>
+
+    <a href="https://ru.wikipedia.org/wiki/Голожаберные" 
+   target="_blank" 
+   title="Зайчики">
+   https://ru.wikipedia.org/wiki/Голожаберные
+</a>
+<p></p>
+    <a href="index.html" class="btn">Вернуться на Главную</a>
+
+</body>
+</html>
